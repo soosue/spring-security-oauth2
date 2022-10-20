@@ -5,7 +5,6 @@ spring:
         registration:
           kakao:
             client-id: asdf
-            client-secret: asdf
             redirect_uri: "{baseUrl}/{action}/oauth2/code/{registrationId}"
             authorization_grant_type: authorization_code
 #            scope: name, email

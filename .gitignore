@@ -1,3 +1,6 @@
+### PROJECT ###
+src/main/resources/application-oauth.yml
+
 HELP.md
 .gradle
 build/
