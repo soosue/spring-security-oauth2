@@ -19,14 +19,22 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
+                .httpBasic().disable()
                 .authorizeRequests()
-                .antMatchers("/").permitAll()
-                .antMatchers("/api/v1/**").hasRole(Role.USER.name())
+                .antMatchers("/", "/loginpage").permitAll()
+                .antMatchers("/board").hasRole(Role.USER.name())
                 .anyRequest().authenticated()
+                .and()
+                .formLogin()
+                .loginPage("/loginpage")
                 .and()
                 .oauth2Login()
                 .userInfoEndpoint()
-                .userService(customOAuth2UserService);
+                .userService(customOAuth2UserService)
+                .and()
+                .and()
+                .exceptionHandling()
+                .accessDeniedPage("/forbidden.html");
 
         return http.build();
     }
