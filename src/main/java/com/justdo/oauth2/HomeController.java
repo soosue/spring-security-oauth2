@@ -95,9 +95,4 @@ public class HomeController {
                 </html>
                 """.replace("${body}", body);
     }
-
-    @RequestMapping(value = "/error/403", method = RequestMethod.GET)
-    public String error() {
-        return "error/403";
-    }
 }
